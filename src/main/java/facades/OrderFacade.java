@@ -24,12 +24,12 @@ public class OrderFacade {
         return instance;
     }
 
-    public OrderDTO createOrder(OrderDTO orderDTO, Map<Integer, ItemTypeDTO> itemTypes) {
+    public OrderDTO createOrder(OrderDTO orderDTO, Map<ItemTypeDTO, Integer> itemTypes) {
         EntityManager em = emf.createEntityManager();
         Customer customer = em.find(Customer.class, orderDTO.getCustomer().getId());
         Order order = new Order(customer);
 
-        itemTypes.forEach((amount, itemType) -> {
+        itemTypes.forEach((itemType, amount) -> {
             ItemType itemTypeToAdd = new ItemType(itemType);
             itemTypeToAdd.setItemTypeId(itemType.getId());
             order.addItemType(itemTypeToAdd, amount);

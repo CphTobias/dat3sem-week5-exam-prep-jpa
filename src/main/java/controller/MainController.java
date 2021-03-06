@@ -57,9 +57,9 @@ public class MainController {
         );
 
         OrderDTO toCreate = new OrderDTO(createdCustomer);
-        Map<Integer, ItemTypeDTO> itemsToAdd = new HashMap<>();
-        itemsToAdd.put(4, createdItemType);
-        itemsToAdd.put(10, secondItemType);
+        Map<ItemTypeDTO, Integer> itemsToAdd = new HashMap<>();
+        itemsToAdd.put(createdItemType, 4);
+        itemsToAdd.put(secondItemType, 10);
 
         OrderDTO createdOrderWithItems = orderFacade.createOrder(toCreate, itemsToAdd);
         System.out.println("Created order: " + createdOrderWithItems);

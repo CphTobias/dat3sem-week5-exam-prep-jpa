@@ -60,7 +60,7 @@ public class Order implements Serializable {
         }
     }
 
-    public void removeTeam(ItemType itemType) {
+    public void removeItemType(ItemType itemType) {
         Iterator<OrderItemType> iterator = itemTypes.iterator();
 
         while (iterator.hasNext()) {
