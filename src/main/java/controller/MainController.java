@@ -65,13 +65,13 @@ public class MainController {
         System.out.println("Created order: " + createdOrderWithItems);
 
         OrdersDTO allFromCustomer = orderFacade.getAllFromCustomer(createdCustomer.getId());
-        System.out.println(allFromCustomer);
+        System.out.println("All from customer: " + allFromCustomer);
 
         //Not sure if i can do this with jpql
         double totalPriceOfOrder = 0;
         for (OrderDTO order : allFromCustomer.getAll()) {
             for (OrderItemTypeDTO orderItem : order.getItemTypes()) {
-                totalPriceOfOrder = totalPriceOfOrder + orderItem.getQuantity() * orderItem.getItemType().getPrice();
+                totalPriceOfOrder = totalPriceOfOrder + (orderItem.getQuantity() * orderItem.getItemType().getPrice());
             }
         }
 
